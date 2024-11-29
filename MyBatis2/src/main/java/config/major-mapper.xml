@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- mapper에 접근할 클래스 명 or 인터페이스 명  -->
+<mapper namespace="mapper.MajorMapper">
+	<resultMap type="dto.MajorDTO" id="major">
+		<!-- column : 테이블 컬럼명, property : 클래스 필드명 -->
+		<id column="major_no" property="majorNo"/>
+		<result column="major_name" property="majorName"/>
+	</resultMap>
+
+	<select id="selectAllMajor" resultMap="major" >
+		select * from major
+	</select>
+</mapper>
