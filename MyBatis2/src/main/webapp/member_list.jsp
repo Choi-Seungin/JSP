@@ -16,19 +16,21 @@
 				<th>비밀번호</th>
 				<th>이름</th>
 				<th>닉네임</th>
+				<th>비고</th>
 			</tr>
 		</thead>
-	<tbody>
-	<c:forEach var="member" items="${requestScope.list }">
-	<tr>
-	<td>${member.id }</td>
-	<td>${member.password }</td>
-	<td>${member.nickName }</td>
-	<td>${member.userName }</td>
-	</tr>
-	</c:forEach>
-	
-	</tbody>
+		<tbody>
+			<c:forEach var="member" items="${requestScope.list }">
+				<tr>
+					<td>${member.id }</td>
+					<td>${member.password }</td>
+					<td>${member.userName }</td>
+					<td>${member.nickName }</td>
+					<td><a href="./deleteMember.do?id=${member.id}">삭제</a></td>
+				</tr>
+			</c:forEach>
+
+		</tbody>
 	</table>
 
 </body>

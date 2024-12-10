@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper에 접근할 클래스 명 or 인터페이스 명 -->
+<mapper namespace="mapper.BoardMapper">
+	<resultMap type="dto.BoardDTO" id="board">
+		<id column="bno" property="bno" />
+		<result column="title" property="title" />
+		<result column="write_date" property="writeDate" />
+		<result column="write_update_date" property="writeUpdateDate" />
+		<result column="bcount" property="bcount" />
+		<result column="blike" property="blike" />
+		<result column="bhate" property="bhate" />
+		<result column="content" property="content" />
+		<result column="nickname" property="nickName" />
+	</resultMap>
+	<select id="getBoardList" resultMap="board">
+		select * from board_view
+	</select>
+	<insert id="insertBoard" parameterType="dto.BoardDTO">
+		insert into board(bno,
+		title, content, id)
+		values(seq_board_bno.nextval, #{title},
+		#{content,jdbcType=CLOB}, #{id})
+	</insert>
+	<select id="getBoard" resultMap="board">
+		select * from board_view where
+		bno = #{bno}
+	</select>
+	<update id="updateBoardCount">
+		update board set bcount = bcount + 1 where bno =
+		#{bno}
+	</update>
+	<insert id="insertBoardComment" parameterType="dto.BoardCommentDTO">
+		insert into board_comment(cno, bno, content, id)
+		values(SEQ_BOARD_COMMENT_CNO.nextval, #{bno}, #{content}, #{id})
+	</insert>
+	<select id="getCommentList" resultType="dto.BoardCommentDTO">
+		SELECT * FROM BOARD_COMMENT_VIEW where bno = #{bno}
+	</select>
+	<delete id="deleteBoard">
+		DELETE FROM board WHERE bno = #{bno}
+	</delete>
+	<delete id="deleteBoardComment">
+		DELETE FROM BOARD_COMMENT WHERE cno = #{cno}
+	</delete>
+</mapper>
