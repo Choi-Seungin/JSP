@@ -42,6 +42,12 @@ public class HandlerMapping {
 		case "boardCommentDelete":
 			controller = new BoardCommentDeleteController();
 			break;
+		case "boardUpdateView":
+			controller = new BoardUpdateViewController();
+			break;
+		case "boardUpdate":
+			controller = new BoardUpdateController();
+			break;
 		}
 			
 		return controller;

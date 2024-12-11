@@ -34,7 +34,7 @@
 	</update>
 	<insert id="insertBoardComment" parameterType="dto.BoardCommentDTO">
 		insert into board_comment(cno, bno, content, id)
-		values(SEQ_BOARD_COMMENT_CNO.nextval, #{bno}, #{content}, #{id})
+		values(SEQ_BOARD_COMMENT_CNO.nextval, #{bno}, #{content,jdbcType=CLOB}, #{id})
 	</insert>
 	<select id="getCommentList" resultType="dto.BoardCommentDTO">
 		SELECT * FROM BOARD_COMMENT_VIEW where bno = #{bno}
@@ -45,4 +45,7 @@
 	<delete id="deleteBoardComment">
 		DELETE FROM BOARD_COMMENT WHERE cno = #{cno}
 	</delete>
+	<update id="updateBoard">
+		update board set title = #{title}, content = #{content} where bno = #{bno}
+	</update>
 </mapper>

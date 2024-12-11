@@ -23,4 +23,6 @@ public interface BoardMapper {
 
 	int deleteBoardComment(int cno);
 
+	int updateBoard(BoardDTO dto);
+
 }
