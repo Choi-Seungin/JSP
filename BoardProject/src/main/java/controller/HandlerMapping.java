@@ -48,6 +48,15 @@ public class HandlerMapping {
 		case "boardUpdate":
 			controller = new BoardUpdateController();
 			break;
+		case "fileDown":
+			controller = new FileDownController();
+			break;
+		case "boardLike":
+			controller = new BoardLikeController();
+			break;
+		case "boardHate":
+			controller = new BoardHateController();
+			break;
 		}
 			
 		return controller;

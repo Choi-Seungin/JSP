@@ -1,12 +1,16 @@
 package service;
 
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import config.DBManager;
 import dto.BoardCommentDTO;
 import dto.BoardDTO;
+import dto.BoardFileDTO;
 import mapper.BoardMapper;
 
 public class BoardService {
@@ -28,17 +32,24 @@ public class BoardService {
 		}
 	}
 
-	public int insertBoard(BoardDTO dto) {
+	public int insertBoard(BoardDTO dto, List<BoardFileDTO> fList) {
 		try (SqlSession session = DBManager.getInstance().getSession()) {
 			BoardMapper mapper = session.getMapper(BoardMapper.class);
-			return mapper.insertBoard(dto);
+			int bno = mapper.selectBoardNo();
+			dto.setBno(bno);
+			int count = mapper.insertBoard(dto);
+			fList.forEach(item -> {
+				item.setBno(bno);
+				mapper.insertBoardFile(item);
+			});
+			return count;
 		}
 	}
 
-	public BoardDTO getBoard(int bno) {
+	public BoardDTO selectBoard(int bno) {
 		try (SqlSession session = DBManager.getInstance().getSession()) {
 			BoardMapper mapper = session.getMapper(BoardMapper.class);
-			return mapper.getBoard(bno);
+			return mapper.selectBoard(bno);
 		}
 	}
 
@@ -82,6 +93,70 @@ public class BoardService {
 			BoardMapper mapper = session.getMapper(BoardMapper.class);
 			return mapper.updateBoard(dto);
 		}
-		
+	}
+
+	public List<BoardFileDTO> getBoardFileList(int bno) {
+		try (SqlSession session = DBManager.getInstance().getSession()) {
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+			return mapper.getBoardFileList(bno);
+		}
+
+	}
+
+	public String selectFilePath(int fno) {
+		try (SqlSession session = DBManager.getInstance().getSession()) {
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+			return mapper.selectFilePath(fno);
+		}
+	}
+
+	public int insertBoardLike(int bno, String id) {
+		try (SqlSession session = DBManager.getInstance().getSession()) {
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("bno", bno);
+			map.put("id", id);
+			return mapper.insertBoardLike(map);
+		}
+	}
+	public int deleteBoardLike(int bno, String id) {
+		try (SqlSession session = DBManager.getInstance().getSession()) {
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("bno", bno);
+			map.put("id", id);
+			return mapper.deleteBoardLike(map);
+		}
+	}
+	public int insertBoardHate(int bno, String id) {
+		try (SqlSession session = DBManager.getInstance().getSession()) {
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("bno", bno);
+			map.put("id", id);
+			return mapper.insertBoardHate(map);
+		}
+	}
+	public int deleteBoardHate(int bno, String id) {
+		try (SqlSession session = DBManager.getInstance().getSession()) {
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("bno", bno);
+			map.put("id", id);
+			return mapper.deleteBoardHate(map);
+		}
+	}
+
+	public int getBoardLike(int bno) {
+		try (SqlSession session = DBManager.getInstance().getSession()) {
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+			return mapper.getBoardLike(bno);
+		}
+	}
+	public int getBoardHate(int bno) {
+		try (SqlSession session = DBManager.getInstance().getSession()) {
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+			return mapper.getBoardHate(bno);
+		}
 	}
 }

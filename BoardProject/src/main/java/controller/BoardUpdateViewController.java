@@ -15,11 +15,10 @@ public class BoardUpdateViewController implements Controller {
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int bno = Integer.parseInt(request.getParameter("bno"));
-		BoardDTO dto = BoardService.getInstance().getBoard(bno);
-
+		BoardDTO dto = BoardService.getInstance().selectBoard(bno);
 		ModelAndView view = new ModelAndView();
-		view.addObject("board", dto);
 		view.setPath("board_update_view.jsp");
+		view.addObject("board", dto);
 		return view;
 	}
 
