@@ -57,6 +57,12 @@ public class HandlerMapping {
 		case "boardHate":
 			controller = new BoardHateController();
 			break;
+		case "boardCommentLike":
+			controller = new BoardCommentLikeController();
+			break;
+		case "boardCommentHate":
+			controller = new BoardCommentHateController();
+			break;
 		}
 			
 		return controller;

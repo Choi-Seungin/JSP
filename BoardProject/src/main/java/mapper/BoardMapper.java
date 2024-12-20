@@ -9,7 +9,7 @@ import dto.BoardFileDTO;
 
 public interface BoardMapper {
 	//페이지별 게시글 목록 조회	
-	List<BoardDTO> getBoardList();
+	List<BoardDTO> getBoardList(Map<String, Object> map);
 	//게시글 등록
 	int insertBoard(BoardDTO dto);
 	BoardDTO selectBoard(int bno);
@@ -27,7 +27,12 @@ public interface BoardMapper {
 	int deleteBoardLike(Map<String, Object> map);
 	int insertBoardHate(Map<String, Object> map);
 	int deleteBoardHate(Map<String, Object> map);
-	int getBoardLike(int bno);
 	int getBoardHate(int bno);
+	int getBoardLike(int bno);
+	int deleteBoardCommentLike(Map<String, Object> map);
+	int insertBoardCommentLike(Map<String, Object> map);
+	int deleteBoardCommentHate(Map<String, Object> map);
+	int insertBoardCommentHate(Map<String, Object> map);
+	int selectBoardTotalCount();
 
 }

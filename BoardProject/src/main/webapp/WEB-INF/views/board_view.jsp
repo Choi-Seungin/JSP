@@ -37,13 +37,13 @@
 					fetch(baseUrl).then(response => response.json())
 	            	.then(result => {
 	            		//좋아요, 싫어요 결과 출력
-	            		//개수 최신
+	            		alert(result.msg);
+	            		//개수 최신 - 새로고침
+	            		location.reload();
 	            	})
 				}
 			})
         }
-        
-    
     </script>
 </head>
 <body>

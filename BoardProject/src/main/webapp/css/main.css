@@ -89,4 +89,56 @@
     background-color: #1e7e34;
     transform: translateY(0);
 }
+<style>
+.pagination {
+    text-align: center;
+    padding: 10px 0;
+}
 
+.pagination a {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 8px 12px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #007bff;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #f0f0f0;
+    border-color: #bbb;
+}
+
+.pagination a.current {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    pointer-events: none;
+    cursor: default;
+}
+
+.pagination a:disabled {
+    pointer-events: none;
+    color: #aaa;
+    border-color: #ddd;
+}
+
+.pagination a:first-child,
+.pagination a:last-child {
+    font-weight: bold;
+    padding: 8px 16px;
+}
+
+.pagination a:first-child:hover,
+.pagination a:last-child:hover {
+    background-color: #e0e0e0;
+}
+
+.pagination a:focus {
+    outline: none;
+    border-color: #007bff;
+}
+</style>
