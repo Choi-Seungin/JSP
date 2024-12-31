@@ -11,7 +11,6 @@ import java.util.Scanner;
 public class KMASearchMain {
 
 	public static void main(String[] args) {
-		System.out.println(KMASearch());
 		
 	}
 	
@@ -36,8 +35,7 @@ public class KMASearchMain {
 			String ny = sc.nextLine();
 			
 			System.out.println(KMASearch(sc.nextLine()));
-			text = "?serviceKey=" + "KU7n%2BSSl2LmBESWHveTJGxkvZBoIOwIBuqWG6%2FV%2FZ9j0wodx1kLO8vE%2BBYiOmf1I2wII20N%2Bg1kAQSN2iUfafQ%3D%3D"
-	                + "&pageNo=1&numOfRows=10"
+			text = "?serviceKey=" + ""
 	                + "&dataType=JSON"
 	                + "&base_date=" + URLEncoder.encode(baseDate, "UTF-8")
 	                + "&base_time=" + URLEncoder.encode(baseTime, "UTF-8")

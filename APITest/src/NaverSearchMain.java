@@ -19,8 +19,8 @@ public class NaverSearchMain {
 	}
 	
 	public static String naverNewsSearch(String text) {
-		String clientId = "_pQ6zZjfT1eAufBVDjNM"; 
-        String clientSecret = "UQ3Pj4Ssez";
+		String clientId = ""; 
+        String clientSecret = "";
 
 		StringBuilder sb = new StringBuilder();
 

@@ -13,8 +13,8 @@ import java.util.Map;
 public class NaverNewsSearch {
 
 	 public static void main(String[] args) {
-	        String clientId = "_pQ6zZjfT1eAufBVDjNM"; //애플리케이션 클라이언트 아이디
-	        String clientSecret = "UQ3Pj4Ssez"; //애플리케이션 클라이언트 시크릿
+	        String clientId = ""; //애플리케이션 클라이언트 아이디
+	        String clientSecret = ""; //애플리케이션 클라이언트 시크릿
 
 
 	        String text = null;
